@@ -1,6 +1,8 @@
 package com.javakc.commonutils.api;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +14,7 @@ import java.util.Map;
  * @Copyright © 北京汇才同飞教育科技公司
  */
 @Data
-public class APICODE {
+public class APICODE{
 
     private Integer code;
 
