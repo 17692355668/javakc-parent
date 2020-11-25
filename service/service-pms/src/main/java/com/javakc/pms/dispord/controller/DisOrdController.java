@@ -17,6 +17,7 @@ import java.util.Map;
 @Api(tags = "调度指令库控制器")
 @RestController
 @RequestMapping("/pms/dispord")
+@CrossOrigin
 public class DisOrdController {
     @Autowired
     private DispOrdService dispOrdService;
@@ -32,11 +33,11 @@ public class DisOrdController {
 
 
     @ApiOperation(value = "根据条件进行分页查询")
-    @PostMapping("{pageNo}/{pageSize}")
-    public APICODE findPageDispOrd(DispOrdQuery dispOrdQuery, int pageNo, int pageSize) {
-        Page<DispOrd> page = dispOrdService.findPageDispOrd(dispOrdQuery, pageNo, pageSize);
-        long totalElements = page.getTotalElements();
+    @PostMapping("{pageNum}/{pageSize}")
+    public APICODE findPageDispOrd(@RequestBody(required = false) DispOrdQuery dispOrdQuery,@PathVariable("pageNum") Integer pageNum,@PathVariable("pageSize") Integer pageSize) {
+        Page<DispOrd> page = dispOrdService.findPageDispOrd(dispOrdQuery, pageNum, pageSize);
         List<DispOrd> dispOrdList = page.getContent();
+        long totalElements = page.getTotalElements();
         return APICODE.OK().data("total", totalElements).data("items", dispOrdList);
     }
 
@@ -57,7 +58,7 @@ public class DisOrdController {
 
 
     @ApiOperation(value = "修改调度指令库")
-    @PutMapping("updateDispOrd")
+    @PutMapping
     public APICODE updateDispOrd(@RequestBody DispOrd dispOrd) {
         dispOrdService.saveOrUpdate(dispOrd);
         return APICODE.OK();

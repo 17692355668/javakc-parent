@@ -30,10 +30,10 @@ public class DispOrd {
     private String orderName;
 
     @Column(name = "spec_type")
-    private String specType;
+    private Integer specType;
 
     @Column(name = "priority")
-    private String priority;
+    private Integer priority;
 
     @Column(name = "order_desc")
     private String orderDesc;
