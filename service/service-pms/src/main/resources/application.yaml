@@ -35,3 +35,10 @@ spring:
     time-zone: GMT+8
   jpa:
     show-sql: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos服务地址
+feign:
+  hystrix:
+    enabled: true #开启熔断机制
