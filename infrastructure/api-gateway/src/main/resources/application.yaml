@@ -1,0 +1,22 @@
+server:
+  port: 9002 #端口
+spring:
+  application:
+    name: service-gateway #服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos服务地址
+    gateway:
+      discovery:
+        locator:
+          enabled: true #使用服务发现路由
+      routes:
+        - id: service-pms #随意起名字，建议与服务名保持一致
+          uri: lb://service-pms
+          predicates:
+            - Path=/pms/** #路径匹配
+        - id: service-mes #随意起名字，建议与服务名保持一致
+          uri: lb://service-mes
+          predicates:
+            - Path=/mes/** #路径匹配
