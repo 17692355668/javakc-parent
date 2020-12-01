@@ -1,10 +1,11 @@
 package com.javakc.pms.dispord.controller;
+
 import com.javakc.commonutils.api.APICODE;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pms/user")
-
+@CrossOrigin
 public class LoginController {
 
     @PostMapping("login")
@@ -18,3 +19,4 @@ public class LoginController {
     }
 
 }
+
